@@ -1,7 +1,8 @@
-# Getting Started
+# Innovator Challenge 2021
 
-Welcome to your new project.
+Classic learning labs - Kyma Exercise 1
 
+Project overview
 It contains these folders and files, following our recommended project layout:
 
 File or Folder | Purpose
