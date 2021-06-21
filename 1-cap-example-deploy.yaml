@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capexample-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: capexample-app
+  template:
+    metadata:
+      labels:
+        app: capexample-app
+        version: v1
+    spec:
+      containers:
+      - name: capexample-app
+        image: gunter04/ic2021s1capimage
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory: 32Mi
+        ports:
+        - containerPort: 4004
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: capexample-service
+  labels:
+    app: capexample-app
+spec:
+  ports:
+  - port: 4004
+    name: http
+    targetPort: 4004
+  selector:
+    app: capexample-app
